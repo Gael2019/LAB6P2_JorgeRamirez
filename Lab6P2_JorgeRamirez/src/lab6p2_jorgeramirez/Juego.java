@@ -4,6 +4,8 @@
  */
 package lab6p2_jorgeramirez;
 
+import java.util.Date;
+
 /**
  *
  * @author Jorge Ramirez
@@ -11,17 +13,17 @@ package lab6p2_jorgeramirez;
 public class Juego {
     private String nombre;
     private String descripcion;
-    private String fechaLanzamiento;
+    private Date fechaLanzamiento;
     private double precio;
     private String estado;
-    private boolean rentable;
-    private boolean agregado;
+    private String rentable;
+    private String agregado;
     private int cantidadDisponible;
 
     public Juego() {
     }
 
-    public Juego(String nombre, String descripcion, String fechaLanzamiento, double precio, String estado, boolean rentable, boolean agregado, int cantidadDisponible) {
+    public Juego(String nombre, String descripcion, String fechaLanzamiento, double precio, String estado, String rentable, String agregado, int cantidadDisponible) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaLanzamiento = fechaLanzamiento;
@@ -72,19 +74,19 @@ public class Juego {
         this.estado = estado;
     }
 
-    public boolean isRentable() {
+    public String isRentable() {
         return rentable;
     }
 
-    public void setRentable(boolean rentable) {
+    public void setRentable(String rentable) {
         this.rentable = rentable;
     }
 
-    public boolean isAgregado() {
+    public String isAgregado() {
         return agregado;
     }
 
-    public void setAgregado(boolean agregado) {
+    public void setAgregado(String agregado) {
         this.agregado = agregado;
     }
 
