@@ -23,7 +23,7 @@ public class Juego {
     public Juego() {
     }
 
-    public Juego(String nombre, String descripcion, String fechaLanzamiento, double precio, String estado, String rentable, String agregado, int cantidadDisponible) {
+    public Juego(String nombre, String descripcion, Date fechaLanzamiento, double precio, String estado, String rentable, String agregado, int cantidadDisponible) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.fechaLanzamiento = fechaLanzamiento;
@@ -50,11 +50,11 @@ public class Juego {
         this.descripcion = descripcion;
     }
 
-    public String getFechaLanzamiento() {
+    public Date getFechaLanzamiento() {
         return fechaLanzamiento;
     }
 
-    public void setFechaLanzamiento(String fechaLanzamiento) {
+    public void setFechaLanzamiento(Date fechaLanzamiento) {
         this.fechaLanzamiento = fechaLanzamiento;
     }
 
