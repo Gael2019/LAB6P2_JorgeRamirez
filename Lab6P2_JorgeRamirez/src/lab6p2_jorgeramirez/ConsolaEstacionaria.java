@@ -4,6 +4,8 @@
  */
 package lab6p2_jorgeramirez;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Jorge Ramirez
@@ -12,4 +14,45 @@ public class ConsolaEstacionaria extends Consola {
     private int numControles;
     private String almacenamiento;
     private String tipoConexion;
+
+    public ConsolaEstacionaria(int numControles, String almacenamiento, String tipoConexion) {
+        this.numControles = numControles;
+        this.almacenamiento = almacenamiento;
+        this.tipoConexion = tipoConexion;
+    }
+
+    public int getNumControles() {
+        return numControles;
+    }
+
+    public void setNumControles(int numControles) {
+        this.numControles = numControles;
+    }
+
+    public String getAlmacenamiento() {
+        return almacenamiento;
+    }
+
+    public void setAlmacenamiento(String almacenamiento) {
+        this.almacenamiento = almacenamiento;
+    }
+
+    public String getTipoConexion() {
+        return tipoConexion;
+    }
+
+    public void setTipoConexion(String tipoConexion) {
+        this.tipoConexion = tipoConexion;
+    }
+
+    public ConsolaEstacionaria(int numControles, String almacenamiento, String tipoConexion, int identificacion, String fabricante, int anosUso, double precio, ArrayList<Juego> juegosDisponibles, String modelo) {
+        super(identificacion, fabricante, anosUso, precio, juegosDisponibles, modelo);
+    }
+
+    @Override
+    public String toString() {
+        return "ConsolaEstacionaria{" + "numControles=" + numControles + ", almacenamiento=" + almacenamiento + ", tipoConexion=" + tipoConexion + '}';
+    }
+    
+    
 }
