@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -81,7 +82,7 @@ public class Main extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabla = new javax.swing.JTable();
         jToggleButton1 = new javax.swing.JToggleButton();
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
@@ -424,7 +425,7 @@ public class Main extends javax.swing.JFrame {
 
         jTabbedPane5.addTab("Agregar Juego", jPanel3);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null},
@@ -435,7 +436,7 @@ public class Main extends javax.swing.JFrame {
                 "ID", "Consola", "Tipo", "Fabricante", "Años Uso", "Precio", "Modelo"
             }
         ));
-        jScrollPane3.setViewportView(jTable1);
+        jScrollPane3.setViewportView(Tabla);
 
         jToggleButton1.setText("Acceder");
         jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -512,16 +513,48 @@ public class Main extends javax.swing.JFrame {
 
     private void AgregarConsolaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AgregarConsolaActionPerformed
         // TODO add your handling code here:
-        String ID = IDConsola.getText();
-        String Fabricantre = FabricantreConsola.getText();
+        Object[] datos = new Object[6];
+        String id = IDConsola.getText();
+        int ID = Integer.parseInt(id);
+        String fabricante = FabricantreConsola.getText();
         String uso = AnosDeUso.getText();
-        String modelito = ModeloConsola.getText();
+        int usado = Integer.parseInt(uso);
+        String dollars = PrecioConsola.getText();
+        double precio = Double.parseDouble(dollars);
+        String modelo = ModeloConsola.getText();
+
         if (TipoBotonConsola.isSelected()) {
-            String tipo = "Portatil";
+            String tamaño = JOptionPane.showInputDialog(null, "agregue el tamaño");
+            int size = Integer.parseInt(tamaño);
+            String baterillita = JOptionPane.showInputDialog(null, "Agregue el nivel de la bateria");
+            int bateria = Integer.parseInt(baterillita);
+            String estuche = JOptionPane.showInputDialog(null, "tiene estuche? Marque si o no");
+            console.add(new ConsolaPortatil(size, bateria, estuche, ID, fabricante, usado, precio, modelo));
         } else if (Boton2AgregarConsola.isSelected()) {
-            String tipo = "Estacionaria";
+            String Ncontroles = JOptionPane.showInputDialog(null, "Cuantos controles posee? ");
+            int controles = Integer.parseInt(Ncontroles);
+            String almacenamiento = JOptionPane.showInputDialog(null, "Marque el almacenamiento que posee");
+            String conexion = JOptionPane.showInputDialog(null, "Marque eñ tipo de conexion que tiene");
+            console.add(new ConsolaEstacionaria(controles, almacenamiento, conexion, ID, fabricante, usado, precio, modelo));
         }
-        
+
+        DefaultTableModel m = (DefaultTableModel) Tabla.getModel();
+        for (Consola consolita : console) {
+            datos[0] = consolita.getIdentificacion();
+            datos[1] = consolita.getFabricante();
+            datos[2] = consolita.getAnosUso();
+            datos[3] = consolita.getPrecio();
+            datos[4] = consolita.getModelo();
+            if (consolita instanceof ConsolaPortatil) {
+                datos[5] = "Portatil";
+            } else if (consolita instanceof ConsolaEstacionaria) {
+                datos[5] = "Estacionaria";
+            }
+            m.addRow(datos);
+        }
+
+        JOptionPane.showMessageDialog(this, "Consola Agregada Exitosamente");
+
     }//GEN-LAST:event_AgregarConsolaActionPerformed
 
     private void OpcionBotonEstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OpcionBotonEstadoActionPerformed
@@ -538,29 +571,31 @@ public class Main extends javax.swing.JFrame {
         String estado = "";
         String add = "";
         String rentable = "";
+
         String name = NombreAgregarJuego.getText();
         String descripcion = DescripcionAddJuego.getText();
         Date fecha = FechaAddJuego.getDate();
         String price = PrecioAgregarJuego.getText();
         double Price = Double.parseDouble(price);
+
         if (BotonAgregado1.isSelected()) {
-             estado = "nuevo";
-        }else if (BotonAgregado2.isSelected()) {
-             estado = "Usado";
-        }
-        if (BotonRentable1.isSelected()) {
-            rentable = "Si";
-        } else if (BotonRentable2.isSelected()){
-            rentable = "No";
-        }
-        if (BotonAgregado1.isSelected()) {
+            estado = "nuevo";
             add = "Si";
         } else if (BotonAgregado2.isSelected()) {
-            add = "no";
+            estado = "Usado";
+            add = "No";
         }
+
+        if (BotonRentable1.isSelected()) {
+            rentable = "Si";
+        } else if (BotonRentable2.isSelected()) {
+            rentable = "No";
+        }
+
         String cantidad = CantidadDisponibletext.getText();
         int cant = Integer.parseInt(cantidad);
-        JOptionPane.showMessageDialog(this, "juego agregado exitosamente");
+
+        JOptionPane.showMessageDialog(this, "Juego agregado exitosamente");
     }//GEN-LAST:event_BotonAgregarJuegoActionPerformed
 
     private void BotonRentable1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonRentable1ActionPerformed
@@ -613,7 +648,7 @@ public class Main extends javax.swing.JFrame {
             }
         });
     }
-    ArrayList <Consola> console = new ArrayList();
+    ArrayList<Consola> console = new ArrayList();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JToggleButton AgregarConsola;
     private javax.swing.JTextField AnosDeUso;
@@ -636,6 +671,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JRadioButton OpcionBotonEstado2;
     private javax.swing.JTextField PrecioAgregarJuego;
     private javax.swing.JTextField PrecioConsola;
+    private javax.swing.JTable Tabla;
     private javax.swing.JRadioButton TipoBotonConsola;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
@@ -665,7 +701,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane5;
-    private javax.swing.JTable jTable1;
     private javax.swing.JToggleButton jToggleButton1;
     // End of variables declaration//GEN-END:variables
 }

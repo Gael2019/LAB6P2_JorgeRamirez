@@ -18,12 +18,11 @@ public class Consola {
     private ArrayList <Juego> juegosDisponibles;
     private String modelo;
 
-    public Consola(int identificacion, String fabricante, int anosUso, double precio, ArrayList<Juego> juegosDisponibles, String modelo) {
+    public Consola(int identificacion, String fabricante, int anosUso, double precio, String modelo) {
         this.identificacion = identificacion;
         this.fabricante = fabricante;
         this.anosUso = anosUso;
         this.precio = precio;
-        this.juegosDisponibles = juegosDisponibles;
         this.modelo = modelo;
     }
 

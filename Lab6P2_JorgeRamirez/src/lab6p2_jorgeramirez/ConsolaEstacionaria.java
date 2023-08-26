@@ -45,8 +45,8 @@ public class ConsolaEstacionaria extends Consola {
         this.tipoConexion = tipoConexion;
     }
 
-    public ConsolaEstacionaria(int numControles, String almacenamiento, String tipoConexion, int identificacion, String fabricante, int anosUso, double precio, ArrayList<Juego> juegosDisponibles, String modelo) {
-        super(identificacion, fabricante, anosUso, precio, juegosDisponibles, modelo);
+    public ConsolaEstacionaria(int numControles, String almacenamiento, String tipoConexion, int identificacion, String fabricante, int anosUso, double precio, String modelo) {
+        super(identificacion, fabricante, anosUso, precio,modelo);
     }
 
     @Override

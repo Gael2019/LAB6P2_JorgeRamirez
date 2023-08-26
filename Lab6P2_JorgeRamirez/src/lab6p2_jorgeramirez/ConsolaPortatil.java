@@ -11,26 +11,21 @@ import java.util.ArrayList;
  * @author Jorge Ramirez
  */
 public class ConsolaPortatil extends Consola {
-    private String tamanoPantalla;
+    private int tamanoPantalla;
     private int duracionBateria;
-    private boolean tieneEstuche;
+    private String tieneEstuche;
 
-    public ConsolaPortatil(String tamanoPantalla, int duracionBateria, boolean tieneEstuche) {
-        this.tamanoPantalla = tamanoPantalla;
-        this.duracionBateria = duracionBateria;
-        this.tieneEstuche = tieneEstuche;
-    }
 
-    public ConsolaPortatil(String tamanoPantalla, int duracionBateria, boolean tieneEstuche, int identificacion, String fabricante, int anosUso, double precio, ArrayList<Juego> juegosDisponibles, String modelo) {
-        super(identificacion, fabricante, anosUso, precio, juegosDisponibles, modelo);
+    public ConsolaPortatil(int tamanoPantalla, int duracionBateria, String tieneEstuche, int identificacion, String fabricante, int anosUso, double precio, String modelo) {
+        super(identificacion, fabricante, anosUso, precio, modelo);
  
     }
     
-    public String getTamanoPantalla() {
+    public int getTamanoPantalla() {
         return tamanoPantalla;
     }
 
-    public void setTamanoPantalla(String tamanoPantalla) {
+    public void setTamanoPantalla(int tamanoPantalla) {
         this.tamanoPantalla = tamanoPantalla;
     }
 
@@ -42,11 +37,11 @@ public class ConsolaPortatil extends Consola {
         this.duracionBateria = duracionBateria;
     }
 
-    public boolean isTieneEstuche() {
+    public String isTieneEstuche() {
         return tieneEstuche;
     }
 
-    public void setTieneEstuche(boolean tieneEstuche) {
+    public void setTieneEstuche(String tieneEstuche) {
         this.tieneEstuche = tieneEstuche;
     }
 
