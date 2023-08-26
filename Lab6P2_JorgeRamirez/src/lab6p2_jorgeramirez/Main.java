@@ -524,17 +524,18 @@ public class Main extends javax.swing.JFrame {
         String modelo = ModeloConsola.getText();
 
         if (TipoBotonConsola.isSelected()) {
-            String tamaño = JOptionPane.showInputDialog(null, "agregue el tamaño");
-            int size = Integer.parseInt(tamaño);
             String baterillita = JOptionPane.showInputDialog(null, "Agregue el nivel de la bateria");
             int bateria = Integer.parseInt(baterillita);
-            String estuche = JOptionPane.showInputDialog(null, "tiene estuche? Marque si o no");
+            String tamaño = JOptionPane.showInputDialog(null, "agregue el tamaño");
+            int size = Integer.parseInt(tamaño);
+            String estuche = JOptionPane.showInputDialog(null, "tiene estuche? Si/No");
             console.add(new ConsolaPortatil(size, bateria, estuche, ID, fabricante, usado, precio, modelo));
+            
         } else if (Boton2AgregarConsola.isSelected()) {
+            String almacenamiento = JOptionPane.showInputDialog(null, "Que almacenamiento posee la consola");
             String Ncontroles = JOptionPane.showInputDialog(null, "Cuantos controles posee? ");
             int controles = Integer.parseInt(Ncontroles);
-            String almacenamiento = JOptionPane.showInputDialog(null, "Marque el almacenamiento que posee");
-            String conexion = JOptionPane.showInputDialog(null, "Marque eñ tipo de conexion que tiene");
+            String conexion = JOptionPane.showInputDialog(null, "Que conexion tiene");
             console.add(new ConsolaEstacionaria(controles, almacenamiento, conexion, ID, fabricante, usado, precio, modelo));
         }
 
@@ -553,7 +554,7 @@ public class Main extends javax.swing.JFrame {
             m.addRow(datos);
         }
 
-        JOptionPane.showMessageDialog(this, "Consola Agregada Exitosamente");
+        JOptionPane.showMessageDialog(this, "La consola ha sido agregada");
 
     }//GEN-LAST:event_AgregarConsolaActionPerformed
 
